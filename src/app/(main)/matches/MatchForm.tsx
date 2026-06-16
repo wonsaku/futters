@@ -65,18 +65,18 @@ export default function MatchForm({ authorId, initial }: { authorId: string; ini
       </h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="flex flex-wrap gap-4">
           <div>
             <label className="block text-sm font-medium mb-1.5" style={{ color: 'var(--footers-dark)' }}>경기 날짜</label>
             <input
               type="date"
-              className="footers-input !py-2 !text-sm"
+              className="footers-input !py-2 !text-sm !w-auto"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
             />
           </div>
-          <div>
+          <div className="flex-1 min-w-[140px]">
             <label className="block text-sm font-medium mb-1.5" style={{ color: 'var(--footers-dark)' }}>상대팀</label>
             <input
               type="text"
