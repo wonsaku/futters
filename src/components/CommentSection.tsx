@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { MessageCircle } from 'lucide-react'
 
 type Comment = {
   id: string
@@ -82,8 +83,9 @@ export default function CommentSection({ contentType, contentId }: Props) {
 
   return (
     <div className="mt-8">
-      <h2 className="text-base font-bold mb-4" style={{ color: 'var(--footers-dark)' }}>
-        💬 댓글{' '}
+      <h2 className="text-base font-bold mb-4 flex items-center gap-2" style={{ color: 'var(--footers-dark)' }}>
+        <MessageCircle size={16} style={{ color: 'var(--footers-green)' }} />
+        댓글
         {comments.length > 0 && (
           <span className="text-sm font-normal" style={{ color: 'var(--footers-gray)' }}>
             {comments.length}개

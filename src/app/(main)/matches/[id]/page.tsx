@@ -5,8 +5,8 @@ import DeleteButton from '@/components/DeleteButton'
 import CommentSection from '@/components/CommentSection'
 
 const RESULT = {
-  win:  { label: '승리 🎉', bg: '#DCFCE7', color: '#16A34A', border: '#86EFAC' },
-  loss: { label: '패배 😢', bg: '#FEE2E2', color: '#DC2626', border: '#FCA5A5' },
+  win:  { label: '승리', bg: '#DCFCE7', color: '#16A34A', border: '#86EFAC' },
+  loss: { label: '패배', bg: '#FEE2E2', color: '#DC2626', border: '#FCA5A5' },
   draw: { label: '무승부', bg: '#F3F4F6', color: '#6B7280', border: '#D1D5DB' },
 }
 

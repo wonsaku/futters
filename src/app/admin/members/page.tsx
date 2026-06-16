@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import SoccerBall from '@/components/SoccerBall'
+import { Users, ClipboardList, PartyPopper } from 'lucide-react'
 
 type Member = {
   id: string
@@ -67,8 +69,8 @@ export default function AdminMembersPage() {
       {/* 헤더 */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
-          <Link href="/" className="font-black text-lg" style={{ color: 'var(--footers-green)' }}>
-            ⚽ Footers
+          <Link href="/" className="font-black text-lg flex items-center gap-1.5" style={{ color: 'var(--footers-green)' }}>
+            <SoccerBall size={18} /> Footers
           </Link>
           <div className="flex items-center gap-3">
             <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-green-100 text-green-700">운영진</span>
@@ -119,8 +121,8 @@ export default function AdminMembersPage() {
           <div className="text-center py-16 text-sm" style={{ color: 'var(--footers-gray)' }}>불러오는 중...</div>
         ) : filtered.length === 0 ? (
           <div className="footers-card p-12 text-center">
-            <div className="text-4xl mb-3">
-              {tab === 'pending' ? '🎉' : tab === 'approved' ? '👥' : '📋'}
+            <div className="mb-3 flex justify-center" style={{ color: 'var(--footers-green)' }}>
+              {tab === 'pending' ? <PartyPopper size={40} strokeWidth={1.5} /> : tab === 'approved' ? <Users size={40} strokeWidth={1.5} /> : <ClipboardList size={40} strokeWidth={1.5} />}
             </div>
             <p className="text-sm" style={{ color: 'var(--footers-gray)' }}>
               {tab === 'pending' ? '대기 중인 신청이 없어요' : tab === 'approved' ? '승인된 회원이 없어요' : '거절된 신청이 없어요'}

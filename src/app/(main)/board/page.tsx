@@ -1,5 +1,6 @@
 ﻿import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { MessageCircle, Inbox } from 'lucide-react'
 
 export default async function BoardPage() {
   const supabase = await createClient()
@@ -16,7 +17,9 @@ export default async function BoardPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-black" style={{ color: 'var(--footers-dark)' }}>💬 자유게시판</h1>
+        <h1 className="text-2xl font-black flex items-center gap-2" style={{ color: 'var(--footers-dark)' }}>
+          <MessageCircle size={22} style={{ color: 'var(--footers-green)' }} /> 자유게시판
+        </h1>
         <Link
           href="/board/new"
           className="text-sm font-semibold px-4 py-2 rounded-xl text-white"
@@ -28,7 +31,9 @@ export default async function BoardPage() {
 
       {!posts?.length ? (
         <div className="footers-card p-12 text-center">
-          <div className="text-4xl mb-3">📭</div>
+          <div className="mb-3 flex justify-center" style={{ color: 'var(--footers-green)' }}>
+            <Inbox size={40} strokeWidth={1.5} />
+          </div>
           <p className="text-sm" style={{ color: 'var(--footers-gray)' }}>아직 게시글이 없어요. 첫 번째 글을 남겨보세요!</p>
         </div>
       ) : (

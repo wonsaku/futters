@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import SoccerBall from '@/components/SoccerBall'
+import { Clock } from 'lucide-react'
 
 export default function SignupPage() {
   const supabase = createClient()
@@ -65,7 +67,9 @@ export default function SignupPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center" style={{ background: 'var(--footers-light)' }}>
         <div className="footers-card p-10 max-w-sm w-full">
-          <div className="text-5xl mb-4">⏳</div>
+          <div className="mb-4 flex justify-center" style={{ color: 'var(--footers-green)' }}>
+            <Clock size={48} strokeWidth={1.5} />
+          </div>
           <h2 className="text-xl font-bold mb-3" style={{ color: 'var(--footers-dark)' }}>
             가입 신청 완료!
           </h2>
@@ -86,8 +90,8 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4" style={{ background: 'var(--footers-light)' }}>
-      <Link href="/" className="font-black text-2xl mb-8" style={{ color: 'var(--footers-green)' }}>
-        ⚽ Footers
+      <Link href="/" className="font-black text-2xl mb-8 flex items-center gap-2" style={{ color: 'var(--footers-green)' }}>
+        <SoccerBall size={24} /> Footers
       </Link>
 
       <div className="footers-card p-8 w-full max-w-sm">

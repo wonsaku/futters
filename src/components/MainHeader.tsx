@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { Megaphone, ClipboardList, Camera, MessageCircle, type LucideIcon } from 'lucide-react'
+import SoccerBall from '@/components/SoccerBall'
 
 type Profile = {
   nickname: string
@@ -11,12 +13,13 @@ type Profile = {
   role: 'admin' | 'member'
 }
 
-const NAV = [
-  { href: '/notices', label: '📢 공지사항' },
-  { href: '/matches', label: '📋 경기 기록' },
-  { href: '/photos', label: '📸 팀 사진' },
-  { href: '/board', label: '💬 자유게시판' },
+const NAV: { href: string; label: string; Icon: LucideIcon }[] = [
+  { href: '/notices', label: '공지사항', Icon: Megaphone },
+  { href: '/matches', label: '경기 기록', Icon: ClipboardList },
+  { href: '/photos', label: '팀 사진', Icon: Camera },
+  { href: '/board', label: '자유게시판', Icon: MessageCircle },
 ]
+
 
 export default function MainHeader({ profile }: { profile: Profile }) {
   const router = useRouter()
@@ -41,25 +44,26 @@ export default function MainHeader({ profile }: { profile: Profile }) {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-3">
-        <Link href="/" className="font-black text-lg flex-shrink-0 tracking-tight" style={{ color: 'var(--footers-green)' }}>
-          ⚽ Footers
+        <Link href="/" className="font-black text-lg flex-shrink-0 tracking-tight flex items-center gap-1.5" style={{ color: 'var(--footers-green)' }}>
+          <SoccerBall size={18} /> Footers
         </Link>
 
         {/* 데스크탑 nav */}
         <nav className="hidden md:flex items-center gap-1 flex-1 overflow-x-auto">
-          {NAV.map(({ href, label }) => {
+          {NAV.map(({ href, label, Icon }) => {
             const active = pathname.startsWith(href)
             return (
               <Link
                 key={href}
                 href={href}
-                className="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-colors"
+                className="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-colors flex items-center gap-1.5"
                 style={{
                   background: active ? 'var(--footers-warm)' : 'transparent',
                   color: active ? 'var(--footers-green)' : 'var(--footers-gray)',
                   fontWeight: active ? 700 : 500,
                 }}
               >
+                <Icon size={14} />
                 {label}
               </Link>
             )
@@ -106,20 +110,21 @@ export default function MainHeader({ profile }: { profile: Profile }) {
       {/* 모바일 드롭다운 */}
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 flex flex-col gap-1">
-          {NAV.map(({ href, label }) => {
+          {NAV.map(({ href, label, Icon }) => {
             const active = pathname.startsWith(href)
             return (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 rounded-xl text-sm font-medium transition-colors"
+                className="px-3 py-2.5 rounded-xl text-sm font-medium transition-colors flex items-center gap-2"
                 style={{
                   background: active ? 'var(--footers-warm)' : 'transparent',
                   color: active ? 'var(--footers-green)' : 'var(--footers-gray)',
                   fontWeight: active ? 700 : 500,
                 }}
               >
+                <Icon size={15} />
                 {label}
               </Link>
             )

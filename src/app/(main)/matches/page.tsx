@@ -1,5 +1,6 @@
 ﻿import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { ClipboardList, CircleDot } from 'lucide-react'
 
 const RESULT = {
   win:  { label: '승', bg: '#DCFCE7', color: '#16A34A' },
@@ -28,7 +29,9 @@ export default async function MatchesPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-black" style={{ color: 'var(--footers-dark)' }}>📋 경기 기록</h1>
+        <h1 className="text-2xl font-black flex items-center gap-2" style={{ color: 'var(--footers-dark)' }}>
+          <ClipboardList size={22} style={{ color: 'var(--footers-green)' }} /> 경기 기록
+        </h1>
         <Link
           href="/matches/new"
           className="text-sm font-semibold px-4 py-2 rounded-xl text-white"
@@ -65,7 +68,9 @@ export default async function MatchesPage() {
 
       {!matches?.length ? (
         <div className="footers-card p-12 text-center">
-          <div className="text-4xl mb-3">⚽</div>
+          <div className="mb-3 flex justify-center" style={{ color: 'var(--footers-green)' }}>
+            <CircleDot size={40} strokeWidth={1.5} />
+          </div>
           <p className="text-sm" style={{ color: 'var(--footers-gray)' }}>아직 등록된 경기가 없어요</p>
         </div>
       ) : (

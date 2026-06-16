@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import SoccerBall from '@/components/SoccerBall'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
@@ -68,8 +69,8 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4" style={{ background: 'var(--footers-light)' }}>
-      <Link href="/" className="font-black text-2xl mb-8" style={{ color: 'var(--footers-green)' }}>
-        ⚽ Footers
+      <Link href="/" className="font-black text-2xl mb-8 flex items-center gap-2" style={{ color: 'var(--footers-green)' }}>
+        <SoccerBall size={24} /> Footers
       </Link>
 
       <div className="footers-card p-8 w-full max-w-sm">

@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { Camera, Image } from 'lucide-react'
 
 export default async function PhotosPage() {
   const supabase = await createClient()
@@ -12,7 +13,9 @@ export default async function PhotosPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-black" style={{ color: 'var(--footers-dark)' }}>📸 팀 사진</h1>
+        <h1 className="text-2xl font-black flex items-center gap-2" style={{ color: 'var(--footers-dark)' }}>
+          <Camera size={22} style={{ color: 'var(--footers-green)' }} /> 팀 사진
+        </h1>
         <Link
           href="/photos/new"
           className="text-sm font-semibold px-4 py-2 rounded-xl text-white"
@@ -24,7 +27,9 @@ export default async function PhotosPage() {
 
       {!photos?.length ? (
         <div className="footers-card p-12 text-center">
-          <div className="text-4xl mb-3">📷</div>
+          <div className="mb-3 flex justify-center" style={{ color: 'var(--footers-green)' }}>
+            <Camera size={40} strokeWidth={1.5} />
+          </div>
           <p className="text-sm" style={{ color: 'var(--footers-gray)' }}>아직 올라온 사진이 없어요</p>
         </div>
       ) : (
@@ -48,7 +53,9 @@ export default async function PhotosPage() {
                       className="w-full h-full object-cover transition-transform group-hover:scale-105"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-3xl">📷</div>
+                    <div className="w-full h-full flex items-center justify-center" style={{ color: 'var(--footers-green)' }}>
+                      <Image size={32} strokeWidth={1.5} />
+                    </div>
                   )}
                   {photo.image_urls.length > 1 && (
                     <span className="absolute top-1.5 right-1.5 text-xs px-1.5 py-0.5 rounded-md bg-black/50 text-white font-medium">

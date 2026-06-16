@@ -1,5 +1,6 @@
 ﻿import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { Megaphone, Inbox } from 'lucide-react'
 
 export default async function NoticesPage() {
   const supabase = await createClient()
@@ -16,7 +17,9 @@ export default async function NoticesPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-black" style={{ color: 'var(--footers-dark)' }}>📢 공지사항</h1>
+        <h1 className="text-2xl font-black flex items-center gap-2" style={{ color: 'var(--footers-dark)' }}>
+          <Megaphone size={22} style={{ color: 'var(--footers-green)' }} /> 공지사항
+        </h1>
         {profile?.role === 'admin' && (
           <Link
             href="/notices/new"
@@ -30,7 +33,9 @@ export default async function NoticesPage() {
 
       {!notices?.length ? (
         <div className="footers-card p-12 text-center">
-          <div className="text-4xl mb-3">📭</div>
+          <div className="mb-3 flex justify-center" style={{ color: 'var(--footers-green)' }}>
+            <Inbox size={40} strokeWidth={1.5} />
+          </div>
           <p className="text-sm" style={{ color: 'var(--footers-gray)' }}>아직 공지사항이 없어요</p>
         </div>
       ) : (

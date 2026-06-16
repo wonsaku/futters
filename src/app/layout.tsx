@@ -5,7 +5,7 @@ import './globals.css'
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 
 export const metadata: Metadata = {
-  title: 'Footers ⚽',
+  title: 'Footers',
   description: '팀 풋살 경기를 기록하고 분석하세요',
 }
 

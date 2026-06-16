@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { Megaphone, ClipboardList, Camera, MessageCircle, type LucideIcon } from 'lucide-react'
+import SoccerBall from '@/components/SoccerBall'
 
 type Props = {
   isLoggedIn: boolean
@@ -11,12 +13,13 @@ type Props = {
   role: string | null
 }
 
-const NAV = [
-  { href: '/notices', label: '📢 공지사항' },
-  { href: '/matches', label: '📋 경기 기록' },
-  { href: '/photos', label: '📸 팀 사진' },
-  { href: '/board', label: '💬 자유게시판' },
+const NAV: { href: string; label: string; Icon: LucideIcon }[] = [
+  { href: '/notices', label: '공지사항', Icon: Megaphone },
+  { href: '/matches', label: '경기 기록', Icon: ClipboardList },
+  { href: '/photos', label: '팀 사진', Icon: Camera },
+  { href: '/board', label: '자유게시판', Icon: MessageCircle },
 ]
+
 
 export default function HomeHeader({ isLoggedIn, nickname, role }: Props) {
   const router = useRouter()
@@ -40,21 +43,22 @@ export default function HomeHeader({ isLoggedIn, nickname, role }: Props) {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
-        <span className="font-black text-xl tracking-tight flex-shrink-0" style={{ color: 'var(--footers-green)' }}>
-          ⚽ Footers
+        <span className="font-black text-xl tracking-tight flex-shrink-0 flex items-center gap-1.5" style={{ color: 'var(--footers-green)' }}>
+          <SoccerBall size={20} /> Footers
         </span>
 
         {isLoggedIn ? (
           <>
             {/* 데스크탑 nav */}
             <nav className="hidden md:flex items-center gap-1 flex-1 overflow-x-auto">
-              {NAV.map(({ href, label }) => (
+              {NAV.map(({ href, label, Icon }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-colors hover:bg-green-50"
+                  className="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-colors hover:bg-green-50 flex items-center gap-1.5"
                   style={{ color: 'var(--footers-gray)' }}
                 >
+                  <Icon size={14} />
                   {label}
                 </Link>
               ))}
@@ -116,14 +120,15 @@ export default function HomeHeader({ isLoggedIn, nickname, role }: Props) {
       {/* 모바일 드롭다운 (로그인 상태) */}
       {isLoggedIn && open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 flex flex-col gap-1">
-          {NAV.map(({ href, label }) => (
+          {NAV.map(({ href, label, Icon }) => (
             <Link
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="px-3 py-2.5 rounded-xl text-sm font-medium transition-colors hover:bg-green-50"
+              className="px-3 py-2.5 rounded-xl text-sm font-medium transition-colors hover:bg-green-50 flex items-center gap-2"
               style={{ color: 'var(--footers-gray)' }}
             >
+              <Icon size={15} />
               {label}
             </Link>
           ))}
