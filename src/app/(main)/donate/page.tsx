@@ -43,7 +43,8 @@ export default function DonatePage() {
       }
 
       const tossPayments = await loadTossPayments(clientKey)
-      const payment = tossPayments.payment({ customerKey: user.id })
+      const customerKey = user.id.replace(/-/g, '')
+      const payment = tossPayments.payment({ customerKey })
 
       const orderId = `donation-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 
