@@ -7,13 +7,21 @@ export default function SoccerBall({ size = 20 }: { size?: number }) {
       fill="none"
       style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
     >
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-      <path d="M12 8.5 L15.3 10.9 L14.1 14.8 L9.9 14.8 L8.7 10.9 Z" fill="currentColor" />
-      <path d="M12 8.5 L12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M15.3 10.9 L21.5 8.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M14.1 14.8 L17.9 20.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M9.9 14.8 L6.1 20.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M8.7 10.9 L2.5 8.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {/* 머리 */}
+      <circle cx="5.5" cy="2.8" r="1.8" stroke="currentColor" strokeWidth="1.5" />
+      {/* 몸통 */}
+      <line x1="5.5" y1="4.8" x2="5.5" y2="9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {/* 팔 (균형) */}
+      <line x1="5.5" y1="6.8" x2="2.5" y2="9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="5.5" y1="6.8" x2="8.5" y2="8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {/* 지지하는 왼쪽 다리 */}
+      <polyline points="5.5,9.5 4,14 3,16.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* 공 차는 오른쪽 다리: 허벅지 앞으로, 하퇴부 공 방향으로 */}
+      <polyline points="5.5,9.5 11,7.5 16.5,13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* 공 */}
+      <circle cx="19.5" cy="15.5" r="3" stroke="currentColor" strokeWidth="1.5" />
+      {/* 공 중앙 패턴 */}
+      <path d="M19.5 13.5 L21 14.5 L20.5 16.5 L18.5 16.5 L18 14.5 Z" fill="currentColor" fillOpacity="0.65" />
     </svg>
   )
 }
