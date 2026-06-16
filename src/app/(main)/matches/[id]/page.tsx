@@ -39,31 +39,31 @@ export default async function MatchDetailPage({
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
-      <div className="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <Link href="/matches" className="text-sm mb-3 inline-block" style={{ color: 'var(--footers-gray)' }}>
-            ← 목록으로
-          </Link>
-          <h1 className="text-2xl font-black" style={{ color: 'var(--footers-dark)' }}>
+      <div className="mb-6">
+        <Link href="/matches" className="text-sm mb-2 inline-block" style={{ color: 'var(--footers-gray)' }}>
+          ← 목록으로
+        </Link>
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl font-black" style={{ color: 'var(--footers-dark)' }}>
             vs {match.opponent}
           </h1>
-          <p className="text-sm mt-1" style={{ color: 'var(--footers-gray)' }}>
-            {new Date(match.match_date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
-            {match.location && ` · ${match.location}`}
-          </p>
+          {canEdit && (
+            <div className="flex gap-2 flex-shrink-0">
+              <Link
+                href={`/matches/${id}/edit`}
+                className="px-3 py-1.5 rounded-lg text-sm border font-medium hover:bg-gray-50"
+                style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
+              >
+                수정
+              </Link>
+              <DeleteButton table="matches" id={id} redirectTo="/matches" />
+            </div>
+          )}
         </div>
-        {canEdit && (
-          <div className="flex gap-2 flex-shrink-0 mt-6">
-            <Link
-              href={`/matches/${id}/edit`}
-              className="px-3 py-1.5 rounded-lg text-sm border font-medium hover:bg-gray-50"
-              style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
-            >
-              수정
-            </Link>
-            <DeleteButton table="matches" id={id} redirectTo="/matches" />
-          </div>
-        )}
+        <p className="text-sm mt-1" style={{ color: 'var(--footers-gray)' }}>
+          {new Date(match.match_date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          {match.location && ` · ${match.location}`}
+        </p>
       </div>
 
       {/* 결과 카드 */}

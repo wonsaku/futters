@@ -129,7 +129,7 @@ export default function AdminMembersPage() {
         ) : (
           <div className="flex flex-col gap-3">
             {filtered.map((member) => (
-              <div key={member.id} className="footers-card p-5 flex items-center justify-between gap-4">
+              <div key={member.id} className="footers-card p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <div className="flex items-center gap-3 min-w-0">
                   {/* 아바타 */}
                   <div
@@ -161,7 +161,7 @@ export default function AdminMembersPage() {
                 </div>
 
                 {/* 액션 버튼 */}
-                <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-2 flex-wrap sm:flex-shrink-0">
                   {tab === 'pending' && (
                     <>
                       <button

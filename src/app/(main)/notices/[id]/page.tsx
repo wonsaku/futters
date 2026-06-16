@@ -31,32 +31,32 @@ export default async function NoticeDetailPage({
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       {/* 상단 */}
-      <div className="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <Link href="/notices" className="text-sm mb-3 inline-block" style={{ color: 'var(--footers-gray)' }}>
-            ← 목록으로
-          </Link>
-          <h1 className="text-2xl font-black leading-tight" style={{ color: 'var(--footers-dark)' }}>
+      <div className="mb-6">
+        <Link href="/notices" className="text-sm mb-2 inline-block" style={{ color: 'var(--footers-gray)' }}>
+          ← 목록으로
+        </Link>
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl font-black leading-tight" style={{ color: 'var(--footers-dark)' }}>
             {notice.title}
           </h1>
-          <p className="text-sm mt-2" style={{ color: 'var(--footers-gray)' }}>
-            {author?.nickname ?? '운영진'} ·{' '}
-            {new Date(notice.created_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
-            {notice.updated_at !== notice.created_at && ' (수정됨)'}
-          </p>
+          {isAdmin && (
+            <div className="flex gap-2 flex-shrink-0">
+              <Link
+                href={`/notices/${id}/edit`}
+                className="px-3 py-1.5 rounded-lg text-sm border font-medium transition-colors hover:bg-gray-50"
+                style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
+              >
+                수정
+              </Link>
+              <DeleteButton table="notices" id={id} redirectTo="/notices" />
+            </div>
+          )}
         </div>
-        {isAdmin && (
-          <div className="flex gap-2 flex-shrink-0 mt-6">
-            <Link
-              href={`/notices/${id}/edit`}
-              className="px-3 py-1.5 rounded-lg text-sm border font-medium transition-colors hover:bg-gray-50"
-              style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
-            >
-              수정
-            </Link>
-            <DeleteButton table="notices" id={id} redirectTo="/notices" />
-          </div>
-        )}
+        <p className="text-sm mt-2" style={{ color: 'var(--footers-gray)' }}>
+          {author?.nickname ?? '운영진'} ·{' '}
+          {new Date(notice.created_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          {notice.updated_at !== notice.created_at && ' (수정됨)'}
+        </p>
       </div>
 
       {/* 본문 */}

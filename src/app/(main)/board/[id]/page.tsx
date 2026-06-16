@@ -31,32 +31,32 @@ export default async function PostDetailPage({
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
-      <div className="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <Link href="/board" className="text-sm mb-3 inline-block" style={{ color: 'var(--footers-gray)' }}>
-            ← 목록으로
-          </Link>
-          <h1 className="text-2xl font-black leading-tight" style={{ color: 'var(--footers-dark)' }}>
+      <div className="mb-6">
+        <Link href="/board" className="text-sm mb-2 inline-block" style={{ color: 'var(--footers-gray)' }}>
+          ← 목록으로
+        </Link>
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl font-black leading-tight" style={{ color: 'var(--footers-dark)' }}>
             {post.title}
           </h1>
-          <p className="text-sm mt-2" style={{ color: 'var(--footers-gray)' }}>
-            {author?.nickname ?? '익명'} ·{' '}
-            {new Date(post.created_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
-            {post.updated_at !== post.created_at && ' (수정됨)'}
-          </p>
+          {(isOwner || isAdmin) && (
+            <div className="flex gap-2 flex-shrink-0">
+              <Link
+                href={`/board/${id}/edit`}
+                className="px-3 py-1.5 rounded-lg text-sm border font-medium transition-colors hover:bg-gray-50"
+                style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
+              >
+                수정
+              </Link>
+              <DeleteButton table="posts" id={id} redirectTo="/board" />
+            </div>
+          )}
         </div>
-        {(isOwner || isAdmin) && (
-          <div className="flex gap-2 flex-shrink-0 mt-6">
-            <Link
-              href={`/board/${id}/edit`}
-              className="px-3 py-1.5 rounded-lg text-sm border font-medium transition-colors hover:bg-gray-50"
-              style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
-            >
-              수정
-            </Link>
-            <DeleteButton table="posts" id={id} redirectTo="/board" />
-          </div>
-        )}
+        <p className="text-sm mt-2" style={{ color: 'var(--footers-gray)' }}>
+          {author?.nickname ?? '익명'} ·{' '}
+          {new Date(post.created_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          {post.updated_at !== post.created_at && ' (수정됨)'}
+        </p>
       </div>
 
       <div className="footers-card p-6">
