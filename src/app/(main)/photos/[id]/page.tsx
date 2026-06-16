@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
@@ -50,7 +50,7 @@ export default function PhotoDetailPage() {
   if (!photo) {
     return (
       <main className="max-w-3xl mx-auto px-4 py-16 text-center">
-        <p style={{ color: 'var(--futters-gray)' }}>불러오는 중...</p>
+        <p style={{ color: 'var(--footers-gray)' }}>불러오는 중...</p>
       </main>
     )
   }
@@ -62,13 +62,13 @@ export default function PhotoDetailPage() {
     <main className="max-w-3xl mx-auto px-4 py-8">
       <div className="flex items-start justify-between gap-4 mb-4">
         <div>
-          <Link href="/photos" className="text-sm mb-3 inline-block" style={{ color: 'var(--futters-gray)' }}>
+          <Link href="/photos" className="text-sm mb-3 inline-block" style={{ color: 'var(--footers-gray)' }}>
             ← 목록으로
           </Link>
-          <h1 className="text-2xl font-black leading-tight" style={{ color: 'var(--futters-dark)' }}>
+          <h1 className="text-2xl font-black leading-tight" style={{ color: 'var(--footers-dark)' }}>
             {photo.title}
           </h1>
-          <p className="text-sm mt-1" style={{ color: 'var(--futters-gray)' }}>
+          <p className="text-sm mt-1" style={{ color: 'var(--footers-gray)' }}>
             {photo.author?.nickname} · {new Date(photo.created_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function PhotoDetailPage() {
             <Link
               href={`/photos/${id}/edit`}
               className="px-3 py-1.5 rounded-lg text-sm border font-medium hover:bg-gray-50"
-              style={{ borderColor: '#D1D5DB', color: 'var(--futters-gray)' }}
+              style={{ borderColor: '#D1D5DB', color: 'var(--footers-gray)' }}
             >
               수정
             </Link>
@@ -109,8 +109,8 @@ export default function PhotoDetailPage() {
       )}
 
       {photo.description && (
-        <div className="futters-card p-5">
-          <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--futters-dark)' }}>
+        <div className="footers-card p-5">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--footers-dark)' }}>
             {photo.description}
           </p>
         </div>
