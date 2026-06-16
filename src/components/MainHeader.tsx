@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { Megaphone, ClipboardList, Camera, MessageCircle, type LucideIcon } from 'lucide-react'
+import { Megaphone, ClipboardList, Camera, MessageCircle, Heart, type LucideIcon } from 'lucide-react'
 import SoccerBall from '@/components/SoccerBall'
 
 type Profile = {
@@ -18,6 +18,7 @@ const NAV: { href: string; label: string; Icon: LucideIcon }[] = [
   { href: '/matches', label: '경기 기록', Icon: ClipboardList },
   { href: '/photos', label: '팀 사진', Icon: Camera },
   { href: '/board', label: '자유게시판', Icon: MessageCircle },
+  { href: '/donate', label: '후원하기', Icon: Heart },
 ]
 
 

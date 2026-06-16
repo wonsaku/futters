@@ -2,7 +2,7 @@
 import { createClient } from '@/lib/supabase/server'
 import HomeHeader from '@/components/HomeHeader'
 import SoccerBall from '@/components/SoccerBall'
-import { Camera, ClipboardList, Megaphone, MessageCircle, Lock, Inbox, type LucideIcon } from 'lucide-react'
+import { Camera, ClipboardList, Megaphone, MessageCircle, Lock, Inbox, Heart, type LucideIcon } from 'lucide-react'
 
 const FEATURES: { Icon: LucideIcon; title: string; desc: string; href: string }[] = [
   { Icon: Camera, title: '팀 사진', desc: '경기 현장의 소중한 순간들을 팀원들과 함께 공유하세요.', href: '/photos' },
@@ -170,6 +170,43 @@ export default async function Home() {
               })}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* 후원하기 */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="rounded-3xl p-8 sm:p-10 text-center footers-gradient text-white relative overflow-hidden">
+            <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-white/10" />
+            <div className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full bg-white/10" />
+            <div className="relative">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/20 mb-5">
+                <Heart size={28} />
+              </div>
+              <h2 className="text-2xl font-black mb-2">팀을 후원해주세요</h2>
+              <p className="text-sm opacity-85 mb-7">
+                여러분의 후원이 Footers 팀의 경기 장비와 운영을 지원해요
+              </p>
+              {isLoggedIn ? (
+                <Link
+                  href="/donate"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-white rounded-full font-bold text-sm transition-all hover:bg-white/90"
+                  style={{ color: 'var(--footers-green)' }}
+                >
+                  <Heart size={15} />
+                  후원하기
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-white rounded-full font-bold text-sm transition-all hover:bg-white/90"
+                  style={{ color: 'var(--footers-green)' }}
+                >
+                  로그인 후 후원하기
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
