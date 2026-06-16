@@ -31,7 +31,7 @@ export default async function PhotosPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {photos.map((photo) => {
             const thumb = photo.image_urls?.[0]
-            const author = photo.author as { nickname: string } | null
+            const author = photo.author as unknown as { nickname: string } | null
             return (
               <Link key={photo.id} href={`/photos/${photo.id}`} className="group">
                 <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-2 relative">

@@ -34,7 +34,7 @@ export default async function BoardPage() {
       ) : (
         <div className="flex flex-col gap-2">
           {posts.map((post) => {
-            const author = post.author as { nickname: string } | null
+            const author = post.author as unknown as { nickname: string } | null
             return (
               <Link
                 key={post.id}

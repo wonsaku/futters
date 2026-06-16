@@ -36,7 +36,7 @@ export default async function NoticesPage() {
       ) : (
         <div className="flex flex-col gap-2">
           {notices.map((notice) => {
-            const author = notice.author as { nickname: string } | null
+            const author = notice.author as unknown as { nickname: string } | null
             return (
               <Link
                 key={notice.id}

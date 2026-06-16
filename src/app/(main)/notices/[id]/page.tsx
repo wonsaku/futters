@@ -25,7 +25,7 @@ export default async function NoticeDetailPage({
   if (!notice) notFound()
 
   const isAdmin = profile?.role === 'admin'
-  const author = notice.author as { nickname: string } | null
+  const author = notice.author as unknown as { nickname: string } | null
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
