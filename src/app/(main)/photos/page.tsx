@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import NextImage from 'next/image'
 import { Camera, Image } from 'lucide-react'
 
 export default async function PhotosPage() {
@@ -47,10 +48,12 @@ export default async function PhotosPage() {
                 {/* 썸네일 */}
                 <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-gray-100 relative">
                   {thumb ? (
-                    <img
+                    <NextImage
                       src={thumb}
                       alt={photo.title}
-                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                      fill
+                      sizes="112px"
+                      className="object-cover transition-transform group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center" style={{ color: 'var(--footers-green)' }}>

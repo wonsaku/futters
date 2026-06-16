@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import NextImage from 'next/image'
 import { createClient } from '@/lib/supabase/client'
 import DeleteButton from '@/components/DeleteButton'
 import CommentSection from '@/components/CommentSection'
@@ -90,8 +91,8 @@ export default function PhotoDetailPage() {
       {/* 이미지 */}
       {images.length > 0 && (
         <div className="mb-6">
-          <div className="rounded-2xl overflow-hidden bg-gray-100 mb-3" style={{ aspectRatio: '4/3' }}>
-            <img src={images[imgIdx]} alt={photo.title} className="w-full h-full object-cover" />
+          <div className="rounded-2xl overflow-hidden bg-gray-100 mb-3 relative" style={{ aspectRatio: '4/3' }}>
+            <NextImage src={images[imgIdx]} alt={photo.title} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" priority />
           </div>
           {images.length > 1 && (
             <div className="flex gap-2 overflow-x-auto pb-1">
@@ -99,9 +100,9 @@ export default function PhotoDetailPage() {
                 <button
                   key={url}
                   onClick={() => setImgIdx(idx)}
-                  className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-colors ${imgIdx === idx ? 'border-green-500' : 'border-transparent'}`}
+                  className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-colors relative ${imgIdx === idx ? 'border-green-500' : 'border-transparent'}`}
                 >
-                  <img src={url} alt="" className="w-full h-full object-cover" />
+                  <NextImage src={url} alt="" fill sizes="64px" className="object-cover" />
                 </button>
               ))}
             </div>

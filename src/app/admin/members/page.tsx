@@ -36,6 +36,7 @@ export default function AdminMembersPage() {
       .from('profiles')
       .select('id, nickname, username, role, status, created_at')
       .order('created_at', { ascending: false })
+      .limit(100)
     setMembers(data ?? [])
     setLoading(false)
   }
