@@ -4,6 +4,11 @@ import { NextResponse, type NextRequest } from 'next/server'
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
+  // .env.local 없이도 UI를 볼 수 있도록 env 미설정 시 통과
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
