@@ -5,23 +5,29 @@ export default function SoccerBall({ size = 20 }: { size?: number }) {
       height={size}
       viewBox="0 0 24 24"
       fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
     >
-      {/* 머리 */}
-      <circle cx="5.5" cy="2.8" r="1.8" stroke="currentColor" strokeWidth="1.5" />
-      {/* 몸통 */}
-      <line x1="5.5" y1="4.8" x2="5.5" y2="9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      {/* 팔 (균형) */}
-      <line x1="5.5" y1="6.8" x2="2.5" y2="9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="5.5" y1="6.8" x2="8.5" y2="8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      {/* 지지하는 왼쪽 다리 */}
-      <polyline points="5.5,9.5 4,14 3,16.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      {/* 공 차는 오른쪽 다리: 허벅지 앞으로, 하퇴부 공 방향으로 */}
-      <polyline points="5.5,9.5 11,7.5 16.5,13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      {/* 공 */}
-      <circle cx="19.5" cy="15.5" r="3" stroke="currentColor" strokeWidth="1.5" />
-      {/* 공 중앙 패턴 */}
-      <path d="M19.5 13.5 L21 14.5 L20.5 16.5 L18.5 16.5 L18 14.5 Z" fill="currentColor" fillOpacity="0.65" />
+      {/* 왕발바닥 */}
+      <path
+        d="M1 12 C1 8 2 5 5 5 L10 5 C12.5 5 13.5 7 14 9 C14.5 11 14 14 12 16 C10.5 17.5 8 18 5 18 L3 18 C1.5 18 1 17 1 15 Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      {/* 축구공 */}
+      <circle cx="20" cy="13" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+      {/* 공 오각형 패턴 */}
+      <path
+        d="M20 11 L21.9 12.4 L21.2 14.6 L18.8 14.6 L18.1 12.4 Z"
+        fill="currentColor"
+        fillOpacity="0.65"
+      />
+      <line x1="20"   y1="11"   x2="20"   y2="9.5"  stroke="currentColor" strokeWidth="1" />
+      <line x1="21.9" y1="12.4" x2="23"   y2="11.7" stroke="currentColor" strokeWidth="1" />
+      <line x1="21.2" y1="14.6" x2="22.2" y2="16.1" stroke="currentColor" strokeWidth="1" />
+      <line x1="18.8" y1="14.6" x2="17.8" y2="16.1" stroke="currentColor" strokeWidth="1" />
+      <line x1="18.1" y1="12.4" x2="17"   y2="11.7" stroke="currentColor" strokeWidth="1" />
     </svg>
   )
 }
