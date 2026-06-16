@@ -56,8 +56,9 @@ export default function DonatePage() {
         failUrl: `${window.location.origin}/donate/fail`,
       })
     } catch (e: unknown) {
-      if (e instanceof Error && e.message !== 'User closed the payment') {
-        setError('결제 중 문제가 발생했어요. 다시 시도해주세요.')
+      const msg = e instanceof Error ? e.message : String(e)
+      if (msg !== 'User closed the payment' && msg !== '사용자가 결제를 취소했습니다.') {
+        setError(`오류: ${msg}`)
       }
       setLoading(false)
     }
