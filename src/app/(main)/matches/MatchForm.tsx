@@ -61,11 +61,11 @@ export default function MatchForm({ authorId, initial }: { authorId: string; ini
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-xl font-black mb-6" style={{ color: 'var(--footers-dark)' }}>
-        {initial ? '경기 기록 수정' : '경기 기록 등록'}
+        {initial ? '경기 기록 수정' : '경기 기록'}
       </h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium mb-1.5" style={{ color: 'var(--footers-dark)' }}>경기 날짜</label>
             <input
