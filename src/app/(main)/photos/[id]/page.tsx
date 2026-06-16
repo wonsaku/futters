@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import DeleteButton from '@/components/DeleteButton'
+import CommentSection from '@/components/CommentSection'
 
 type Photo = {
   id: string
@@ -115,6 +116,8 @@ export default function PhotoDetailPage() {
           </p>
         </div>
       )}
+
+      <CommentSection contentType="photo" contentId={id} />
     </main>
   )
 }

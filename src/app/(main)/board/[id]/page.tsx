@@ -2,6 +2,7 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import DeleteButton from '@/components/DeleteButton'
+import CommentSection from '@/components/CommentSection'
 
 export default async function PostDetailPage({
   params,
@@ -67,6 +68,8 @@ export default async function PostDetailPage({
           <p className="text-sm" style={{ color: 'var(--footers-gray)' }}>내용이 없어요.</p>
         )}
       </div>
+
+      <CommentSection contentType="post" contentId={id} />
     </main>
   )
 }

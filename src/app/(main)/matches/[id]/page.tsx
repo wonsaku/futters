@@ -2,6 +2,7 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import DeleteButton from '@/components/DeleteButton'
+import CommentSection from '@/components/CommentSection'
 
 const RESULT = {
   win:  { label: '승리 🎉', bg: '#DCFCE7', color: '#16A34A', border: '#86EFAC' },
@@ -96,6 +97,8 @@ export default async function MatchDetailPage({
       <p className="text-xs mt-4 text-center" style={{ color: 'var(--footers-gray)' }}>
         기록자: {author?.nickname}
       </p>
+
+      <CommentSection contentType="match" contentId={id} />
     </main>
   )
 }
