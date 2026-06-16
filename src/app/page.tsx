@@ -41,7 +41,7 @@ export default async function Home() {
       />
 
       {/* 히어로 */}
-      <section className="footers-gradient py-24 px-4 text-center text-white relative overflow-hidden">
+      <section className="footers-gradient py-16 sm:py-24 px-4 text-center text-white relative overflow-hidden">
         <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-10 bg-white" />
         <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full opacity-10 bg-white" />
         <div className="relative max-w-xl mx-auto">
@@ -77,12 +77,12 @@ export default async function Home() {
       </section>
 
       {/* 특징 */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-12 sm:py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-center text-2xl font-black mb-10" style={{ color: 'var(--footers-dark)' }}>
             Footers는 다음의 기능을 제공해요
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {FEATURES.map((f) => {
               const card = (
                 <div className="footers-card p-6 text-center hover:shadow-md transition-shadow h-full">
