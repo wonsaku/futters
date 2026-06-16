@@ -41,7 +41,7 @@ export default function PhotoDetailPage() {
       ])
 
       if (!photo) { router.push('/photos'); return }
-      setPhoto(photo as Photo)
+      setPhoto(photo as unknown as Photo)
       setIsAdmin(profile?.role === 'admin')
     }
     load()
