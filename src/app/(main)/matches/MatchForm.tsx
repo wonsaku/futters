@@ -70,7 +70,7 @@ export default function MatchForm({ authorId, initial }: { authorId: string; ini
             <label className="block text-sm font-medium mb-1.5" style={{ color: 'var(--footers-dark)' }}>경기 날짜</label>
             <input
               type="date"
-              className="footers-input"
+              className="footers-input !py-2 !text-sm"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
